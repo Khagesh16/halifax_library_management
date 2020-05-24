@@ -1,0 +1,35 @@
+﻿@model dbproject.p_author_articles
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>p_author_articles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.p_articles.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_articles.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_author.lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_author.lname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.C_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,103 @@
+﻿@model dbproject.p_transaction
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>p_transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.p_customer.fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_customer.fname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.p_customer.lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_customer.lname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.total_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.discount_code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.discount_code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+
+
+    </dl>
+    </div>
+<div>
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    Purchase ID
+                </th>
+                <th>
+                    Item ID
+                </th>
+                <th>
+                    Price
+                </th>
+            </tr>
+
+            @foreach (var item in Model.p_purchase)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.C_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.p_items.C_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.p_items.price)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+<div>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @if (ViewBag.ErrorMessage == null) {
+            <input type="submit" value="Delete" class="btn btn-default" />
+            } else {
+                <span class="text-danger">@ViewBag.ErrorMessage</span>
+            }|
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

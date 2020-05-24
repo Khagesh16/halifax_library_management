@@ -1,0 +1,98 @@
+﻿@model dbproject.p_transaction
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>p_transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.p_customer.fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_customer.fname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.p_customer.lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_customer.lname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.total_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.discount_code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.discount_code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Create Purchase", "CreateWithTransaction" , "p_purchase",new { id = Model.transaction_id } , null)
+    
+</p>
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>
+                Purchase ID
+            </th>
+            <th>
+                Item ID
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.p_purchase)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p_items.C_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p_items.price)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Delete", "Delete","p_purchase", new { id = item.C_id },null)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.transaction_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

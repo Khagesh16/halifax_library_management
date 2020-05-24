@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbfinalprojectModelStoreContainer" CdmEntityContainer="dbfinalprojectEntities">
+    <EntitySetMapping Name="p_articles">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_articles">
+        <MappingFragment StoreEntitySet="p_articles">
+          <ScalarProperty Name="publication_id" ColumnName="publication_id" />
+          <ScalarProperty Name="page_no" ColumnName="page_no" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_author">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_author">
+        <MappingFragment StoreEntitySet="p_author">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="C_id" ColumnName="_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_author_articles">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_author_articles">
+        <MappingFragment StoreEntitySet="p_author_articles">
+          <ScalarProperty Name="C_id" ColumnName="_id" />
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+          <ScalarProperty Name="author_id" ColumnName="author_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_customer">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_customer">
+        <MappingFragment StoreEntitySet="p_customer">
+          <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+          <ScalarProperty Name="apt_no" ColumnName="apt_no" />
+          <ScalarProperty Name="street_name" ColumnName="street_name" />
+          <ScalarProperty Name="streetNo" ColumnName="streetNo" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_emp_expense">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_emp_expense">
+        <MappingFragment StoreEntitySet="p_emp_expense">
+          <ScalarProperty Name="C_id" ColumnName="_id" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="sin" ColumnName="sin" />
+          <ScalarProperty Name="hours" ColumnName="hours" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_employee">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_employee">
+        <MappingFragment StoreEntitySet="p_employee">
+          <ScalarProperty Name="hourly_pay" ColumnName="hourly_pay" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="sin" ColumnName="sin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_expense_cat">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_expense_cat">
+        <MappingFragment StoreEntitySet="p_expense_cat">
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="C_id" ColumnName="_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_items">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_items">
+        <MappingFragment StoreEntitySet="p_items">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="C_id" ColumnName="_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_magazine">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_magazine">
+        <MappingFragment StoreEntitySet="p_magazine">
+          <ScalarProperty Name="magazine_name" ColumnName="magazine_name" />
+          <ScalarProperty Name="magazine_id" ColumnName="magazine_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_other_expense">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_other_expense">
+        <MappingFragment StoreEntitySet="p_other_expense">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_publication">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_publication">
+        <MappingFragment StoreEntitySet="p_publication">
+          <ScalarProperty Name="magazine_id" ColumnName="magazine_id" />
+          <ScalarProperty Name="published_date" ColumnName="published_date" />
+          <ScalarProperty Name="volume_number" ColumnName="volume_number" />
+          <ScalarProperty Name="publication_id" ColumnName="publication_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_purchase">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_purchase">
+        <MappingFragment StoreEntitySet="p_purchase">
+          <ScalarProperty Name="C_id" ColumnName="_id" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="transaction_id" ColumnName="transaction_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="p_transaction">
+      <EntityTypeMapping TypeName="dbfinalprojectModel.p_transaction">
+        <MappingFragment StoreEntitySet="p_transaction">
+          <ScalarProperty Name="cid" ColumnName="cid" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="discount_code" ColumnName="discount_code" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="transaction_id" ColumnName="transaction_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

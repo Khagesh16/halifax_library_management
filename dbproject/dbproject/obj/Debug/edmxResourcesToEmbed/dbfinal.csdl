@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbfinalprojectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="dbfinalprojectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="p_articles" EntityType="dbfinalprojectModel.p_articles" />
+    <EntitySet Name="p_author" EntityType="dbfinalprojectModel.p_author" />
+    <EntitySet Name="p_author_articles" EntityType="dbfinalprojectModel.p_author_articles" />
+    <EntitySet Name="p_customer" EntityType="dbfinalprojectModel.p_customer" />
+    <EntitySet Name="p_emp_expense" EntityType="dbfinalprojectModel.p_emp_expense" />
+    <EntitySet Name="p_employee" EntityType="dbfinalprojectModel.p_employee" />
+    <EntitySet Name="p_expense_cat" EntityType="dbfinalprojectModel.p_expense_cat" />
+    <EntitySet Name="p_items" EntityType="dbfinalprojectModel.p_items" />
+    <EntitySet Name="p_magazine" EntityType="dbfinalprojectModel.p_magazine" />
+    <EntitySet Name="p_other_expense" EntityType="dbfinalprojectModel.p_other_expense" />
+    <EntitySet Name="p_publication" EntityType="dbfinalprojectModel.p_publication" />
+    <EntitySet Name="p_purchase" EntityType="dbfinalprojectModel.p_purchase" />
+    <EntitySet Name="p_transaction" EntityType="dbfinalprojectModel.p_transaction" />
+    <AssociationSet Name="p_articles_ibfk_1" Association="dbfinalprojectModel.p_articles_ibfk_1">
+      <End Role="p_publication" EntitySet="p_publication" />
+      <End Role="p_articles" EntitySet="p_articles" />
+    </AssociationSet>
+    <AssociationSet Name="p_author_articles_ibfk_2" Association="dbfinalprojectModel.p_author_articles_ibfk_2">
+      <End Role="p_articles" EntitySet="p_articles" />
+      <End Role="p_author_articles" EntitySet="p_author_articles" />
+    </AssociationSet>
+    <AssociationSet Name="p_author_articles_ibfk_1" Association="dbfinalprojectModel.p_author_articles_ibfk_1">
+      <End Role="p_author" EntitySet="p_author" />
+      <End Role="p_author_articles" EntitySet="p_author_articles" />
+    </AssociationSet>
+    <AssociationSet Name="p_transaction_ibfk_1" Association="dbfinalprojectModel.p_transaction_ibfk_1">
+      <End Role="p_customer" EntitySet="p_customer" />
+      <End Role="p_transaction" EntitySet="p_transaction" />
+    </AssociationSet>
+    <AssociationSet Name="p_emp_expense_ibfk_1" Association="dbfinalprojectModel.p_emp_expense_ibfk_1">
+      <End Role="p_employee" EntitySet="p_employee" />
+      <End Role="p_emp_expense" EntitySet="p_emp_expense" />
+    </AssociationSet>
+    <AssociationSet Name="p_other_expense_ibfk_1" Association="dbfinalprojectModel.p_other_expense_ibfk_1">
+      <End Role="p_expense_cat" EntitySet="p_expense_cat" />
+      <End Role="p_other_expense" EntitySet="p_other_expense" />
+    </AssociationSet>
+    <AssociationSet Name="p_purchase_ibfk_2" Association="dbfinalprojectModel.p_purchase_ibfk_2">
+      <End Role="p_items" EntitySet="p_items" />
+      <End Role="p_purchase" EntitySet="p_purchase" />
+    </AssociationSet>
+    <AssociationSet Name="p_publication_ibfk_1" Association="dbfinalprojectModel.p_publication_ibfk_1">
+      <End Role="p_magazine" EntitySet="p_magazine" />
+      <End Role="p_publication" EntitySet="p_publication" />
+    </AssociationSet>
+    <AssociationSet Name="p_purchase_ibfk_1" Association="dbfinalprojectModel.p_purchase_ibfk_1">
+      <End Role="p_transaction" EntitySet="p_transaction" />
+      <End Role="p_purchase" EntitySet="p_purchase" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="p_articles">
+    <Key>
+      <PropertyRef Name="article_id" />
+    </Key>
+    <Property Name="article_id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="page_no" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="publication_id" Type="Int32" />
+    <NavigationProperty Name="p_publication" Relationship="dbfinalprojectModel.p_articles_ibfk_1" FromRole="p_articles" ToRole="p_publication" />
+    <NavigationProperty Name="p_author_articles" Relationship="dbfinalprojectModel.p_author_articles_ibfk_2" FromRole="p_articles" ToRole="p_author_articles" />
+  </EntityType>
+  <EntityType Name="p_author">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="C_id" Type="Int32" Nullable="false" />
+    <Property Name="lname" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="fname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="p_author_articles" Relationship="dbfinalprojectModel.p_author_articles_ibfk_1" FromRole="p_author" ToRole="p_author_articles" />
+  </EntityType>
+  <EntityType Name="p_author_articles">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="author_id" Type="Int32" />
+    <Property Name="article_id" Type="Int32" />
+    <Property Name="C_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="p_articles" Relationship="dbfinalprojectModel.p_author_articles_ibfk_2" FromRole="p_author_articles" ToRole="p_articles" />
+    <NavigationProperty Name="p_author" Relationship="dbfinalprojectModel.p_author_articles_ibfk_1" FromRole="p_author_articles" ToRole="p_author" />
+  </EntityType>
+  <EntityType Name="p_customer">
+    <Key>
+      <PropertyRef Name="cid" />
+    </Key>
+    <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telephone" Type="Int32" />
+    <Property Name="streetNo" Type="Int32" />
+    <Property Name="street_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apt_no" Type="Int32" />
+    <Property Name="zipcode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="p_transaction" Relationship="dbfinalprojectModel.p_transaction_ibfk_1" FromRole="p_customer" ToRole="p_transaction" />
+  </EntityType>
+  <EntityType Name="p_emp_expense">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="date" Type="DateTime" />
+    <Property Name="hours" Type="Int32" />
+    <Property Name="sin" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="salary" Type="Single" />
+    <Property Name="C_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="p_employee" Relationship="dbfinalprojectModel.p_emp_expense_ibfk_1" FromRole="p_emp_expense" ToRole="p_employee" />
+  </EntityType>
+  <EntityType Name="p_employee">
+    <Key>
+      <PropertyRef Name="sin" />
+    </Key>
+    <Property Name="sin" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hourly_pay" Type="Single" />
+    <NavigationProperty Name="p_emp_expense" Relationship="dbfinalprojectModel.p_emp_expense_ibfk_1" FromRole="p_employee" ToRole="p_emp_expense" />
+  </EntityType>
+  <EntityType Name="p_expense_cat">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="C_id" Type="Int32" Nullable="false" />
+    <Property Name="category_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="p_other_expense" Relationship="dbfinalprojectModel.p_other_expense_ibfk_1" FromRole="p_expense_cat" ToRole="p_other_expense" />
+  </EntityType>
+  <EntityType Name="p_items">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="C_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="price" Type="Single" Nullable="false" />
+    <NavigationProperty Name="p_purchase" Relationship="dbfinalprojectModel.p_purchase_ibfk_2" FromRole="p_items" ToRole="p_purchase" />
+  </EntityType>
+  <EntityType Name="p_magazine">
+    <Key>
+      <PropertyRef Name="magazine_id" />
+    </Key>
+    <Property Name="magazine_id" Type="Int32" Nullable="false" />
+    <Property Name="magazine_name" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="p_publication" Relationship="dbfinalprojectModel.p_publication_ibfk_1" FromRole="p_magazine" ToRole="p_publication" />
+  </EntityType>
+  <EntityType Name="p_other_expense">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="date" Type="DateTime" />
+    <Property Name="cost" Type="Single" />
+    <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="p_expense_cat" Relationship="dbfinalprojectModel.p_other_expense_ibfk_1" FromRole="p_other_expense" ToRole="p_expense_cat" />
+  </EntityType>
+  <EntityType Name="p_publication">
+    <Key>
+      <PropertyRef Name="publication_id" />
+    </Key>
+    <Property Name="publication_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="volume_number" Type="Int32" Nullable="false" />
+    <Property Name="published_date" Type="DateTime" />
+    <Property Name="magazine_id" Type="Int32" />
+    <NavigationProperty Name="p_articles" Relationship="dbfinalprojectModel.p_articles_ibfk_1" FromRole="p_publication" ToRole="p_articles" />
+    <NavigationProperty Name="p_magazine" Relationship="dbfinalprojectModel.p_publication_ibfk_1" FromRole="p_publication" ToRole="p_magazine" />
+  </EntityType>
+  <EntityType Name="p_purchase">
+    <Key>
+      <PropertyRef Name="C_id" />
+    </Key>
+    <Property Name="transaction_id" Type="Int32" />
+    <Property Name="item_id" Type="Int64" />
+    <Property Name="C_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="p_items" Relationship="dbfinalprojectModel.p_purchase_ibfk_2" FromRole="p_purchase" ToRole="p_items" />
+    <NavigationProperty Name="p_transaction" Relationship="dbfinalprojectModel.p_purchase_ibfk_1" FromRole="p_purchase" ToRole="p_transaction" />
+  </EntityType>
+  <EntityType Name="p_transaction">
+    <Key>
+      <PropertyRef Name="transaction_id" />
+    </Key>
+    <Property Name="transaction_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="total_price" Type="Single" />
+    <Property Name="discount_code" Type="Int32" />
+    <Property Name="date" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="p_customer" Relationship="dbfinalprojectModel.p_transaction_ibfk_1" FromRole="p_transaction" ToRole="p_customer" />
+    <NavigationProperty Name="p_purchase" Relationship="dbfinalprojectModel.p_purchase_ibfk_1" FromRole="p_transaction" ToRole="p_purchase" />
+  </EntityType>
+  <Association Name="p_articles_ibfk_1">
+    <End Type="dbfinalprojectModel.p_publication" Role="p_publication" Multiplicity="0..1" />
+    <End Type="dbfinalprojectModel.p_articles" Role="p_articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_publication">
+        <PropertyRef Name="publication_id" />
+      </Principal>
+      <Dependent Role="p_articles">
+        <PropertyRef Name="publication_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_author_articles_ibfk_2">
+    <End Type="dbfinalprojectModel.p_articles" Role="p_articles" Multiplicity="0..1" />
+    <End Type="dbfinalprojectModel.p_author_articles" Role="p_author_articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_articles">
+        <PropertyRef Name="article_id" />
+      </Principal>
+      <Dependent Role="p_author_articles">
+        <PropertyRef Name="article_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_author_articles_ibfk_1">
+    <End Type="dbfinalprojectModel.p_author" Role="p_author" Multiplicity="0..1" />
+    <End Type="dbfinalprojectModel.p_author_articles" Role="p_author_articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_author">
+        <PropertyRef Name="C_id" />
+      </Principal>
+      <Dependent Role="p_author_articles">
+        <PropertyRef Name="author_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_transaction_ibfk_1">
+    <End Type="dbfinalprojectModel.p_customer" Role="p_customer" Multiplicity="1" />
+    <End Type="dbfinalprojectModel.p_transaction" Role="p_transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_customer">
+        <PropertyRef Name="cid" />
+      </Principal>
+      <Dependent Role="p_transaction">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_emp_expense_ibfk_1">
+    <End Type="dbfinalprojectModel.p_employee" Role="p_employee" Multiplicity="0..1" />
+    <End Type="dbfinalprojectModel.p_emp_expense" Role="p_emp_expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_employee">
+        <PropertyRef Name="sin" />
+      </Principal>
+      <Dependent Role="p_emp_expense">
+        <PropertyRef Name="sin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_other_expense_ibfk_1">
+    <End Type="dbfinalprojectModel.p_expense_cat" Role="p_expense_cat" Multiplicity="1" />
+    <End Type="dbfinalprojectModel.p_other_expense" Role="p_other_expense" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="p_expense_cat">
+        <PropertyRef Name="C_id" />
+      </Principal>
+      <Dependent Role="p_other_expense">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_purchase_ibfk_2">
+    <End Type="dbfinalprojectModel.p_items" Role="p_items" Multiplicity="0..1" />
+    <End Type="dbfinalprojectModel.p_purchase" Role="p_purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_items">
+        <PropertyRef Name="C_id" />
+      </Principal>
+      <Dependent Role="p_purchase">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_publication_ibfk_1">
+    <End Type="dbfinalprojectModel.p_magazine" Role="p_magazine" Multiplicity="0..1" />
+    <End Type="dbfinalprojectModel.p_publication" Role="p_publication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_magazine">
+        <PropertyRef Name="magazine_id" />
+      </Principal>
+      <Dependent Role="p_publication">
+        <PropertyRef Name="magazine_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_purchase_ibfk_1">
+    <End Type="dbfinalprojectModel.p_transaction" Role="p_transaction" Multiplicity="0..1" />
+    <End Type="dbfinalprojectModel.p_purchase" Role="p_purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_transaction">
+        <PropertyRef Name="transaction_id" />
+      </Principal>
+      <Dependent Role="p_purchase">
+        <PropertyRef Name="transaction_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

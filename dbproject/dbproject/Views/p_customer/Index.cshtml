@@ -1,0 +1,70 @@
+﻿@model IEnumerable<dbproject.p_customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.streetNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.street_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apt_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.zipcode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telephone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.streetNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.street_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apt_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.zipcode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cid })
+        </td>
+    </tr>
+}
+
+</table>

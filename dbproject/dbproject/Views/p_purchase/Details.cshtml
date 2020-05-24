@@ -1,0 +1,35 @@
+﻿@model dbproject.p_purchase
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>p_purchase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.p_items.C_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_items.C_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_transaction.transaction_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_transaction.transaction_id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.C_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
