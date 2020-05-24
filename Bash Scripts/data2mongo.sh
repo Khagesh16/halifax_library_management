@@ -17,13 +17,8 @@ printf " "
 printf "Please enter the name of the  MongoDB "
 read mongo_database
 
-
-#folder="/home/student_2019_winter/m_rankireddi/Project"
-#pass="A00432392"
 coll1="Articles"
 coll2="Authors"
-#db="m_rankireddi"
-#user="m_rankireddi"
 
 mysql -u $mysql_username -p  < ./new_tables.sql
 

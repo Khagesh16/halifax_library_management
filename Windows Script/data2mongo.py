@@ -60,7 +60,6 @@ def parse(file):
         regex = re.compile('[^a-zA-Z ]')
         lists = []
         authors = []  
-        #print(len(input))
         print("Parsing JSON...")
         
         for i in range(0, len(input)):
@@ -70,8 +69,7 @@ def parse(file):
                 article_authors=[]
                 if 'pages' in input[i].keys() and 'author' in input[i].keys() and 'title' in input[i].keys() and 'year' in input[i].keys():
                     
-                    if len(input[i]['title']) == 2 and 'ftext' in input[i]['title'].keys():
-                        # print(input[i]['title']['ftext'])  
+                    if len(input[i]['title']) == 2 and 'ftext' in input[i]['title'].keys():  
                         title = input[i]['title']['ftext']
                             
                         if isinstance(input[i]['pages']['ftext'], str):
@@ -85,22 +83,18 @@ def parse(file):
                             
                         for j in input[i]['author']:
                             if isinstance(j, str) and j == 'ftext':
-                                    # print(input[i]['author'][j])
                                 
                                 author = input[i]['author'][j]
                                 author=regex.sub('',author)
-                                #articles_info = create_json(id, title, pages, volume, journal, author)
                                 article_authors.append(author)
                                 authors.append(author)
-                                #lists.append(articles_info)
                             elif isinstance(j, dict):
                                     # print(j['ftext'])
                                 author = j['ftext']
                                 author=regex.sub('',author)
                                 authors.append(author)
-                                #articles_info = create_json(id, title, pages, volume, journal, author)
                                 article_authors.append(author)
-                                #lists.append(articles_info)
+                               
                             else:
                                 continue
                         
@@ -129,7 +123,6 @@ def parse(file):
     
 if __name__ == "__main__":
     cwd = os.getcwd()
-    #print(cwd)
     input_file = "articles.json"
     clean(input_file)
     sleep(5)

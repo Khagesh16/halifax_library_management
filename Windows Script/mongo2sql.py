@@ -9,7 +9,6 @@ connection = mysql.connector.connect(host="localhost", database="project",
 mycursor = connection.cursor(buffered=True)
 
 client = MongoClient('localhost', 27017)
-# connection=Connection('localhost',27017)
 db = client.project
 collection = db.articles
 query = {"id": {"$lt": "500"}}
@@ -73,7 +72,3 @@ for dic in doc:
     except Exception as e:
         print(repr(e))
 
-# print(type(dic["page"]))
-
-
-# print(error)
